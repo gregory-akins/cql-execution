@@ -1210,7 +1210,7 @@ DateTime.prototype.add = Date.prototype.add = function (offset, field) {
   }
 
   // Increment the field, then round-trip to JS date and back for calendar math
-  const normalized = this.constructor.fromJSDate(moment(result.toJSDate()).add(moment.duration(offset, cql_to_moment_units[field])).toDate(), this.timezoneOffset)
+  const normalized = this.constructor.fromJSDate(moment(result.toJSDate()).add(offset, cql_to_moment_units[field]).toDate(), this.timezoneOffset)
   for (field of this.constructor.FIELDS) {
     if (result[field] != null) {
       result[field] = normalized[field];
